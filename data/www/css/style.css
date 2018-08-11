@@ -1,0 +1,64 @@
+body{
+
+}
+
+/* Global */
+.container{
+  width:80%;
+  margin:auto;
+  overflow:hidden;
+}
+
+ul{
+  margin:0;
+  padding:0;
+}
+
+.button_1{
+  height:38px;
+  background:#e8491d;
+  border:0;
+  padding-left: 20px;
+  padding-right:20px;
+  color:#ffffff;
+}
+
+/* Header **/
+header{
+  background:#ffffff;
+  color:#000000;
+  padding-top:30px;
+  min-height:70px;
+  border-bottom:#000000 3px solid;
+}
+
+header a{
+  color:#000000;
+  text-decoration:none;
+  text-transform: lowercase;
+  font-size:16px;
+}
+
+header li{
+
+  display:inline;
+  padding: 0 20px 0 20px;
+}
+
+
+
+header #branding h1{
+  margin:0;
+}
+
+header nav{
+
+  margin-top:10px;
+}
+
+
+
+
+
+
+

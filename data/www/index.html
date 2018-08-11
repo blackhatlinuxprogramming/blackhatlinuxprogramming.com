@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<meta name="description" content="Linux programming for blackhat hackers">
+	<meta name="keywords" content="blackhat, linux, programming, security, hacking, hacker">
+	<meta name="author" content="Sebastian Dumbrava">
+	<title> Blackhat Linux Programming | About</title>
+	<link rel="stylesheet" href="./css/style.css">
+</head>
+	
+<header>
+      <div class="container">
+        <div id="branding">
+    
+          <h1 style="text-align:center;"> Blackhat Linux Programming</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="index.html">home</a></li>
+            <li><a href="https://github.com/blackhatlinuxprogramming">github</a></li>
+            <li><a href="malware.html">malware</a></li>
+            <li><a href="reversing.html">reversing</a></li>
+            <li><a href="networking.html">networking</a></li>
+            <li><a href="forensics.html">forensics</a></li>
+          </ul>
+        </nav>
+      </div>	
+
+</header>
+	<body>
+	<h2 style="text-align:center;"> Blackhat Linux Programming </h2>
+
+	<p> Linux programming for blackhat hackers. </p>
+	<pre style='color:#1f1c1b;background-color:#ffffff;'>
+ 
+<span style='color:#0057ae;'>unsigned</span> <span style='color:#0057ae;'>long</span>
+get_symbol(<span style='color:#0057ae;'>char</span> *name)
+{
+    <span style='color:#0057ae;'>FILE</span> *f;
+    <span style='color:#0057ae;'>unsigned</span> <span style='color:#0057ae;'>long</span> addr;
+    <span style='color:#0057ae;'>char</span> dummy, sym[<span style='color:#b08000;'>512</span>];
+    <span style='color:#0057ae;'>int</span> ret = <span style='color:#b08000;'>0</span>;
+  
+    f = fopen(<span style='color:#bf0303;'>&quot;/proc/kallsyms&quot;</span>, <span style='color:#bf0303;'>&quot;r&quot;</span>);
+    <b>if</b> (!f) {
+        <b>return</b> <span style='color:#b08000;'>0</span>;
+    }
+  
+    <b>while</b> (ret != EOF) {
+        ret = fscanf(f, <span style='color:#bf0303;'>&quot;%p %c %s</span><span style='color:#3daee9;'>\n</span><span style='color:#bf0303;'>&quot;</span>, (<span style='color:#0057ae;'>void</span> **) &amp;addr, &amp;dummy, sym);
+        <b>if</b> (ret == <span style='color:#b08000;'>0</span>) {
+            fscanf(f, <span style='color:#bf0303;'>&quot;%s</span><span style='color:#3daee9;'>\n</span><span style='color:#bf0303;'>&quot;</span>, sym);
+            <b>continue</b>;
+        }
+        <b>if</b> (!strcmp(name, sym)) {
+            printf(<span style='color:#bf0303;'>&quot;[+] resolved symbol %s to %p</span><span style='color:#3daee9;'>\n</span><span style='color:#bf0303;'>&quot;</span>, name, (<span style='color:#0057ae;'>void</span> *) addr);
+            fclose(f);
+            <b>return</b> addr;
+        }
+    }
+    fclose(f);
+  
+    <b>return</b> <span style='color:#b08000;'>0</span>;
+}</pre>
+
+	</body>
+</html>
